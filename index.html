@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /* Pop-up Ad CSS */
+            .popup {
+                display: none; /* Hidden by default */
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4); /* Background overlay */
+                padding-top: 50px; /* Position the popup vertically */
+            }
+
+            .popup-content {
+                background-color: #fff;
+                margin: 15% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 70%;
+                text-align: center;
+                position: relative;
+            }
+
+            .popup-content .close {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+                color: #aaa;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .popup-content .close:hover,
+            .popup-content .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            /* Image inside the pop-up */
+            .promo-image {
+                width: 100%;
+                height: auto;
+                margin-bottom: 15px; /* Space below the image */
+            }
+
+            /* Optional styling for the pop-up text */
+            .popup-content p {
+                font-size: 18px;
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <img src="images/mall_logo.png" />
+        </div>
+        <div id="tabs-top">
+            <a href="about.html">ABOUT</a>
+            <a href="index.html">PROMOTIONS</a>
+            <a href="stores.html">STORES</a>
+            <a href="movies.html">MOVIES</a>
+        </div>
+        <div id="main-home">
+            <img src="images/cover.png" width="100%"/>
+        </div>
+        <div id="tabs-bottom">
+            <a href="map.html">MAP</a>
+            <a href="contactus.html">CONTACT US</a>
+        </div>
+
+        <!-- Pop-up 1 -->
+        <div id="popup-1" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popup-1')">&times;</span>
+                <!-- Insert the image for this promotion -->
+                <img src="images/popup1.jpg" alt="Promotion 1" class="promo-image">
+                <p>Great Deal on Bubbles. While stock lasts!</p>
+            </div>
+        </div>
+
+        <!-- Pop-up 2 -->
+        <div id="popup-2" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popup-2')">&times;</span>
+                <!-- Insert the image for this promotion -->
+                <img src="images/popup2.jpg" alt="Promotion 2" class="promo-image">
+                <p>Give your loved one a special gift with 20% off selected gift sets.</p>
+            </div>
+        </div>
+
+        <!-- Pop-up 3 -->
+        <div id="popup-3" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popup-3')">&times;</span>
+                <!-- Insert the image for this promotion -->
+                <img src="images/popup3.jpg" alt="Promotion 3" class="promo-image">
+                <p>Kickstart your week with Spur's Burger Monday Special! Enjoy a juicy, delicious burger for just R79,90.</p>
+            </div>
+        </div>
+
+        <!-- JavaScript for Pop-up -->
+        <script>
+            // Function to open the popup
+            function openPopup(popupId) {
+                document.getElementById(popupId).style.display = "block";
+            }
+
+            // Function to close the popup
+            function closePopup(popupId) {
+                document.getElementById(popupId).style.display = "none";
+            }
+
+            // Function to show a random popup ad
+            function showRandomAd() {
+                var popups = ["popup-1", "popup-2", "popup-3"];
+                var randomPopup = popups[Math.floor(Math.random() * popups.length)]; // Randomly select a popup
+                openPopup(randomPopup); // Open the selected popup
+
+                // Close the popup after 5 seconds (5000 milliseconds)
+                setTimeout(function() {
+                    closePopup(randomPopup);
+
+                    // After closing the popup, show a new random ad after another 2 seconds
+                    setTimeout(showRandomAd, 2000); // Show another random ad after 2 seconds
+                }, 5000); // 5000ms = 5 seconds
+            }
+
+            // Wait for the page to load and show a random ad after 2 seconds
+            window.onload = function() {
+                setTimeout(showRandomAd, 2000); // Show random ad after 2 seconds
+            };
+        </script>
+    </body>
+</html>
